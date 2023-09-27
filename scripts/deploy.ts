@@ -1,13 +1,23 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const Starter = await ethers.getContractFactory("Starter");
-  const starter = await Starter.deploy();
+  const blogTablesContract = await ethers.getContractFactory("BlogCreator");
+  // Deploy using #0 hardhat account 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  const blogTables = await blogTablesContract.deploy();
 
-  await starter.deployed();
-  console.log(`Contract deployed to '${starter.address}'.\n`);
+  await blogTables.deployed();
+  console.log(`Contract deployed to '${blogTables.address}'.\n`);
 
-  const tableName = await starter.tableName();
+  let tableName = await blogTables.CreatorSiteTableName();
+  console.log(`Table name '${tableName}' minted to contract.`);
+
+  tableName = await blogTables.CreatorBlogTableName();
+  console.log(`Table name '${tableName}' minted to contract.`);
+
+  tableName = await blogTables.CreatorMembershipTiersTableName();
+  console.log(`Table name '${tableName}' minted to contract.`);
+
+  tableName = await blogTables.UserSiteSubscriptionsTableName();
   console.log(`Table name '${tableName}' minted to contract.`);
 }
 

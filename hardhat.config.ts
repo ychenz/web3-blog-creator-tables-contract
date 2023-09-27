@@ -158,9 +158,17 @@ const config: HardhatUserConfig = {
       url: `https://api.calibration.node.glif.io/rpc/v1${
         process.env.FILECOIN_CALIBRATION_API_KEY ?? ""
       }`,
+      // https://api.calibration.node.glif.io/rpc/v1
       accounts:
         process.env.FILECOIN_CALIBRATION_PRIVATE_KEY !== undefined
           ? [process.env.FILECOIN_CALIBRATION_PRIVATE_KEY]
+          : [],
+    },
+    "filecoin-local": {
+      url: "http://127.0.0.1:1234/rpc/v1",
+      accounts:
+        process.env.FILECOIN_LOCAL_PRIVATE_KEY !== undefined
+          ? [process.env.FILECOIN_LOCAL_PRIVATE_KEY]
           : [],
     },
   },

@@ -9,6 +9,7 @@
     "build": "hardhat compile",
     "clean": "hardhat clean && rm -rf artifacts && rm -rf cache && rm -rf coverage && rm -f coverage.json",
     "up": "npm install && npm run build && hardhat node --network local-tableland",
+    "up:fil": "npm install && npm run build && hardhat node --network filecoin-local",
     "lt": "hardhat node --network local-tableland",
     "deploy": "hardhat run scripts/deploy.ts --network",
     "deploy:up": "hardhat run scripts/deploy.ts --network localhost",
@@ -29,6 +30,7 @@
     "sql"
   ],
   "devDependencies": {
+    "@chainlink/contracts": "^0.7.1",
     "@nomicfoundation/hardhat-toolbox": "^2.0.2",
     "@openzeppelin/contracts-upgradeable": "^4.8.2",
     "@openzeppelin/hardhat-upgrades": "^1.22.1",
